@@ -120,10 +120,14 @@ class YoutubeEngine:
 			
 
 	def download_track(self, url, artist, track, directory, sam_configuration = False, total_data = None):
+		
 		yt = YouTube(url,use_oauth=True,allow_oauth_cache=True)
 		video = yt.streams.filter(only_audio=True).first()
 
+		print("AAHHH")
+
 		# download the file 
+
 		out_file = video.download(output_path=directory) 
 		base, ext = os.path.splitext(directory+"/"+out_file) 
 	

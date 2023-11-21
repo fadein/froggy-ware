@@ -174,6 +174,10 @@
                                 box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
                                 background-color: #f21f3c;
 				display: flex;
+				color: white;
+				padding: 1px;
+				height: 5vh;
+				font-family: Arial;
                                 align-items: center;
                                 justify-content: center;
 				transform: translate(50%, 0);
@@ -327,12 +331,12 @@
 
 				<div style="margin-top:5em">
 					<label style="display: inline-block;">
-						<input type="radio" name="radio" />
+						<input type="radio" name="radio" value="playlist"/>
 						<h3 style="display: inline"> PLAYLIST </h3>
 					</label>
 
-					<label style="margin-left:3em; display: inline-block;">
-						<input type="radio" name="radio" />
+					<label  style="margin-left:3em; display: inline-block;">
+						<input type="radio" name="radio" value="album"/>
 						<h3 style="display: inline"> ALBUM </h3>
 					</label>
 				</div>
@@ -343,7 +347,6 @@
 				</div>
 			
 			<div class="vertical-bar-right">
-				<h1 class="text-in-vertical-bar"> DOWNLOADED </h1>	
 			</div>
 				
 			<script>

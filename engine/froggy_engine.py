@@ -33,7 +33,7 @@ class FroggyEngine:
 		self.no_persist = no_persist
 
 
-	def get_songs_by_album(self):
+	def get_songs(self):
 		if self.is_album:
 			songs = self.spotify_engine.get_album(self.verbose_metadata)
 		else:
