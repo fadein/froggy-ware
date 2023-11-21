@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Froggy Ware</title>
+		<style>
+      			body {
+            			background-color: #FFFFFF;
+				margin: 0;
+
+        		}
+
+			h1 {
+				font-size: 3vw; 
+         			font-family: 'Helvetica', serif; /* Replace with your preferred font family for h1 elements */
+       			}
+			
+			h2 {
+				font-size: 2.5vw; 
+                                font-family: 'Helvetica', serif; /* Replace with your preferred font family for h1 elements */
+                        }
+
+			h3 {
+				font-size: 1.5vw; 
+				font-family: 'Arial', serif;
+			}
+			
+			h4 {
+				font-size: 0.7vw; 
+				font-family: 'Arial', serif;
+			}
+
+			.topnav {
+		        	background-color: #b6d7a8;/
+        			overflow: hidden;
+         			position: fixed;
+         			width: 100%;
+         			top: 0;
+         			z-index: 1000;
+      			 }
+
+			.topnav a {
+            			float: left;
+            			display: block;
+            			color: #595959;
+            			text-align: center;
+            			padding: 14px 16px;
+            			text-decoration: none;
+				font-family: 'Trubuchet MS', sans-serif;
+				font-size: 18px;
+      			}
+
+        		.topnav a:hover {
+            			background-color: #ddd; /* Replace with your preferred hover background color */
+            			color: black; /* Replace with your preferred hover text color */
+     			}
+
+			.circle-container {
+            			float: right;
+            			padding: 10px;
+     			}
+
+
+			.circle {
+           	 		width: 30px;
+            			height: 30px;
+			   	background-color: #ddd; /* Replace with your preferred background color */
+		    		border-radius: 50%;
+		    		display: inline-block;
+        		}
+
+			.dropdown {
+         			float: left;
+            			overflow: hidden;
+      			}
+
+			.dropdown .dropbtn {
+			    font-size: 16px;
+			    border: none;
+			    outline: none;
+			    color: #595959;
+			    padding: 14px 16px;
+			    background-color: inherit;
+			    font-family: inherit;
+			    margin: 0;
+			    font-size: 20px;
+			}
+
+			.dropdown-content {
+			    display: none;
+			    position: absolute;
+			    background-color: #f9f9f9;
+			    min-width: 160px;
+			    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+			    z-index: 1;
+			}
+			
+			.dropdown-content a {
+			    float: none;
+			    color: black;
+			    padding: 12px 16px;
+			    text-decoration: none;
+			    display: block;
+			    text-align: left;
+		            font-size: 15px;
+			}
+			
+			.dropdown-content a:hover {
+			    background-color: #ddd;
+			}
+
+			.dropdown:hover .dropdown-content {
+			    display: block;
+			}
+
+			.vertical-bar {
+            			background-color: #d9ead3; /* Adjust the background color as needed */
+            			width: 10vw; /* Adjust the width of the bar */
+           			height: 100vh; /* 100% of the viewport height */
+            			position: fixed;
+            			top: 0;
+            			left: 0;
+            			z-index: 999;
+       			}
+			.vertical-bar-right {
+				background-color: #d9ead3;
+			   	 width: 20vw;
+			    	height: 100vh;
+			    	position: fixed;
+			    	right: 0;
+			    	top: 0;
+			    	z-index: 999;
+			    	display: flex;
+			    	flex-direction: column;
+			    	align-items: center;
+			    	justify-content: flex-start;
+			}
+		
+			.text-in-vertical-bar {
+    				margin-top: 20px; /* Adjust the margin to position the text down from the top */
+    				text-align: center;
+			}
+
+			.content {
+           		 	margin-left: 10vw; /* Adjust this margin to match the width of the left vertical bar */
+            			margin-right: 20vw; /* Adjust this margin to match the width of the right vertical bar */
+				margin-top: 50px;
+				height: 100%;
+				position: relative;
+            			padding: 20px;
+				background-color: #FFFFFF;
+				text-align: center; /* Center text horizontally */
+     			}	
+
+			.input-box {
+    				width: 70%;
+    				padding: 10px;
+    				border: 1px solid #ccc;
+    				border-radius: 5px;
+    				box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    				background-color: #f9f9f9;
+			}
+
+			.input-box:focus {
+    				border-color: #4CAF50;
+    				box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+			}
+
+			.provide-url-error {
+				width: 50%;
+                                border: 1px solid #ccc;
+                                border-radius: 1em;
+                                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                                background-color: #f21f3c;
+				display: flex;
+                                align-items: center;
+                                justify-content: center;
+				transform: translate(50%, 0);
+			}
+
+			.provide-url-error:hover {
+				cursor: pointer;
+			}
+
+			.resizable-image {
+            		    width: 20%;
+            		    height: auto;
+            		    margin: auto;
+      			 }
+
+			.convert-button-disabled {
+			    border-radius: 20px;
+                            overflow: hidden;
+                            margin: 0 auto;
+                            max-width: 40em;
+                            background-color: #FFFFFF;
+                            color: #000;
+                            transition: background-color 0.3s ease;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width=10em;
+                            left=100em;
+			}
+
+			.convert-button {
+			    border-radius: 20px;
+			    overflow: hidden;
+			    margin: 0 auto;
+			    max-width: 40em;
+			    background-color: #0dd2d9;
+    			    color: #000;
+    			    transition: background-color 0.3s ease;
+			    display: flex;
+            		    align-items: center;
+            		    justify-content: center;
+			    width=10em;
+			    left=100em;
+			    cursor:pointer;
+
+			}
+
+			.convert-button:hover {
+			    background-color: #36abff;
+    			    color: #ecf0f1;
+			}
+
+			.cover {
+    			    position: fixed;
+    			    top: 10em;
+    			    left: 25em;
+    			    width: 50%;
+    			    height: 50%;
+    			    z-index: 2000;
+    			    border-radius: 30px;
+    			    background-color: rgba(0, 0, 0, 0.7);
+			    display: flex;
+			    flex-direction: column;
+			    justify-content: center;
+			    align-items: center;
+			    overflow: hidden; /* Prevent content from overflowing */
+			}
+
+			#converting-album-art {
+			    max-width: 100%; /* Ensure the image resizes within its container */
+			    height: auto; /* Maintain aspect ratio of the image */
+			}
+			
+
+			.overlay {
+      			    position: fixed;
+			    top: 0;
+			    left: 0;
+			    width: 100%;
+			    height: 100%;
+			    background-color: #000000; /* Change the background color and alpha as needed */
+			    opacity: 0.4;
+			
+			    z-index: 1500; /* Adjust the z-index to make sure it's on top of other elements */
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;
+			}
+
+			 .content-box-text {
+			    color: #FFFFFF;
+			    opacity: 1.0;
+			    margin: 0.5em 0; /* Adjust as needed for spacing */
+			    white-space: nowrap; /* Prevent text from wrapping */
+			    overflow: hidden; /* Hide overflowing text */
+			    text-overflow: ellipsis; /* Add ellipsis (...) for long text */
+			}
+
+
+			
+		</style>
+	</head>
+
+	<body>
+			<div class="overlay" style="visibility: hidden" id="tint-overlay"></div>	
+		
+			<div class="topnav">
+				
+				<div class="dropdown">
+					<button class="dropbtn">&#9776;</button>
+					<div class="dropdown-content">
+						<a href="#link1">Link 1</a>
+						<a href="#link2">Link 2</a>
+						<a href="#link3">Link 3</a>
+					</div>
+				</div>
+
+				<a href="#SETTINGS" >SETTINGS</a>
+				<a href="#URL">URL</a>
+				<a href="#NAME">NAME</a>
+
+				<div class="circle-container">
+					<div class="circle">
+					</div>
+				</div>
+			</div>
+
+			<div class="vertical-bar">
+			</div>	
+
+			<div class="content">
+
+
+				<div class="cover" style="visibility: hidden" id="converting-popup">
+					<h1 id = "converting-info-tag" class="content-box-text" style="padding: 5vh; margin-top: 0; font-family: helvetica"> CONVERTING </h1>
+					<img id="converting-album-art" src="" style="height: 40%"></img>
+					<h2 id = "song-name" class="content-box-text" style="font-family: Helvetica, serif; font-size: 2vw"> </h2>
+					<h3 id = "artist-name" class="content-box-text" style="font-family: Arial, serif; font-size: 1vw">  </h3>
+                        	</div>
+			
+
+				<div onClick="remove_warning()" class="provide-url-error" id="url-input-error" style="visibility: hidden">
+					<h3 style="color: #FFFFFF;"> MUST PROVIDE A SPOTIFY LINK </h3>
+				</div>
+
+				<h1>CONVERT BY URL </h1>
+	
+				<input id="url_input_box" class="input-box" placeholder="Enter Spotify link..." style="margin-top: 5em"></input>
+			
+				<br>
+
+				<div style="margin-top:5em">
+					<label style="display: inline-block;">
+						<input type="radio" name="radio" />
+						<h3 style="display: inline"> PLAYLIST </h3>
+					</label>
+
+					<label style="margin-left:3em; display: inline-block;">
+						<input type="radio" name="radio" />
+						<h3 style="display: inline"> ALBUM </h3>
+					</label>
+				</div>
+
+				<div onClick="convert()" class="convert-button" style="margin-top:2em" id='convertbutton'>
+					<img style="width:10%" src="https://64.media.tumblr.com/fda654985437a7b2664e5833e086c69b/0b9b5160404412fb-f5/s540x810/43cf0d594a16ef9fb0449eb89883009e9276f8dd.png"</img>
+					<h3 style="margin-left:1em"> CONVERT </h3>	
+				</div>
+			
+			<div class="vertical-bar-right">
+				<h1 class="text-in-vertical-bar"> DOWNLOADED </h1>	
+			</div>
+				
+			<script>
+				function convert() {
+					pywebview.api.convert().then(showResponse)
+				}
+
+				function remove_warning() {
+					pywebview.api.remove_url_warning()
+				}
+			</script>
+	</body>
+
+</html>
