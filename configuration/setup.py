@@ -1,7 +1,9 @@
 import subprocess
 import sys
 
-packages = [ "dearpygui", "spotipy", "pytube", "youtube-search-python", "eyed3", "pydub"]
+# Note: WebKit2 API version 4.0 is required for the webview package on Linux
+# pkg-config files: webkit2gtk-4.1
+packages = [ "dearpygui", "spotipy", "pytube", "youtube-search-python", "eyed3", "pydub", "webview"]
 
 
 
